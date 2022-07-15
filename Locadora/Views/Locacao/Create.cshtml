@@ -1,0 +1,22 @@
+﻿@model Locadora.Commands.NovaLocacaoCommand
+
+@{
+    ViewData["Title"] = "Nova locação";
+    Layout = "_Layout";
+}
+<style>
+    .form-control-lg {
+        width: 200px;
+        margin-bottom: 5px;
+    }
+</style>
+<h2>Confirma a locação de "@Model?.FilmeNome" ?</h2>
+
+<p> Informe o código do cliente: </p>
+<form asp-action="Create">
+    <input hidden="true" asp-for="FilmeId" value="@Model?.FilmeId"/>
+    <input asp-for="CodigoCliente" type="text" class="form-control-lg"/>
+    <span asp-validation-for="CodigoCliente" class="text-danger" ></span>
+    <input onclick="location.href='@Url.ActionLink("Index", "Home")'" type="button" class="btn btn-secondary btn-lg" value="Cancelar"/>
+    <input type="submit" class="btn btn-primary btn-lg" value="Alugar"/>
+</form>

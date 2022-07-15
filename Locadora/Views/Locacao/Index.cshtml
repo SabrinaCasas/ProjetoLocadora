@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Locadora.Models.Locacao>
+
+@{
+    ViewData["Title"] = "Locações";
+    Layout = "_Layout";
+}
+
+<style>
+    .Titulo {
+        display: inline;
+        padding-right: 10px;
+    }
+</style>
+
+<h1 class="Titulo">@ViewData["Title"]</h1> 
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            Cliente
+        </th>
+        <th>
+            Filme
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data)
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                <a asp-controller="Clientes" asp-action="Details" asp-route-id="@item.Cliente.Id">
+                    @Html.DisplayFor(modelItem => item.Cliente.Nome)
+                </a>
+            </td>
+            <td>
+                <a asp-controller="Filmes" asp-action="Details" asp-route-id="@item.Filme.Id">
+                    @Html.DisplayFor(modelItem => item.Filme.Nome)
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+

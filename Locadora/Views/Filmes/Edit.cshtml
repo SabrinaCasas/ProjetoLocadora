@@ -1,0 +1,18 @@
+﻿@model Locadora.Models.Filme
+
+@{
+    ViewData["Title"] = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Editar</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="Id" />
+            <partial name="_FilmesPartial" model="@Model"  />
+
+        </form>
+    </div>
+</div>

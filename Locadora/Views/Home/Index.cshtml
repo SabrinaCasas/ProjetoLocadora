@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<style>
+    .grid {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-around;
+    }
+
+    .card {
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+        border: 0;
+        padding: 10px;
+        
+    }
+
+    .card:hover {
+        background-color: #ddd;        
+    }
+
+    .card-body {
+        align-self: stretch;
+    }
+
+    .card-text {
+        text-align: justify;
+    }
+
+    .card-header {
+        align-self: flex-start
+    }
+
+</style>
+
+<div class="text-center">
+    <h1 class="display-4">Locadora</h1>
+    <div class="grid">
+        @{
+            var filmes = (List<Filme>?)ViewData["filmes"] ?? new List<Filme>();
+            foreach (var filme in filmes)
+            {
+                <div class="col-md-4 col-xl-2">
+                    <div class="card mb-4 box-shadow">
+                        <a asp-controller="Filmes" asp-action="Details" asp-route-id="@filme.Id">
+                            <img class="card-img-top" src="@filme.Imagem" title="@filme.Nome" alt="@filme.Nome"/>
+                        </a>
+                        <div class="card-body">
+                            <p class="card-header">@filme.Nome</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button onclick="location.href='@Url.ActionLink("Details", "Filmes", new { id = @filme.Id})'" type="button" class="btn btn-sm btn-outline-secondary">Detalhes</button>
+                                    <button onclick="location.href='@Url.ActionLink("Create", "Locacao", new { id = @filme.Id})'"type="button" class="btn btn-sm btn-outline-secondary">Alugar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    
+</div>
+

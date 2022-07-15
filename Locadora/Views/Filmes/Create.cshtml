@@ -1,0 +1,16 @@
+﻿@model Locadora.Models.Filme
+
+@{
+    ViewData["Title"] = "Novo filme";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Novo Filme</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <partial name="_FilmesPartial" model="@Model" />
+        </form>
+    </div>
+</div>
